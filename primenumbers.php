@@ -1,13 +1,22 @@
 <?php
 function priMe($num){
-for($i=0;$i<=$num;$i++){
-   for($j=1;$j<=10;$j++){
-    if($i%$j!=0){
-        echo"$i <br>";
-
+    $n=0;
+    if($num==1||$num==0){
+        $n=1;
     }
-   }
+    for ($i = 2; $i <= $num / 2;$i++) {
+
+        if ($num % $i == 0) {
+        $n=1;
+}
+    }
+if($n!=1){
+    echo "$num <br>";
 }
 }
-priMe("120");
+$g=0;
+while($g<=100){
+    priMe($g);
+    $g++;
+}
 ?>
