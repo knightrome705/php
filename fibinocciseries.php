@@ -10,17 +10,15 @@
 //     $j=$c;
 
 // }while($i<=20);
-$n=0;
-$a=0;
-$=2;
-// $i=0;
-echo $l ."<br>";
-echo $k ."<br>";
-while($l<=20){
-    $c=$l+$k;
-    echo"Fibinocci is $c <br>";
-   $l=$k;
-   $k=$c;
-    $l++;
+$a=1;
+$b=2;
+$s=0;
+echo $a ."<br>";
+echo $b ."<br>";
+while($a<=20){
+    $s=$a+$b;
+    echo $s."<br>";
+   $a=$b;
+   $b=$s;
 }
 ?>
