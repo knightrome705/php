@@ -11,5 +11,5 @@ function palinDrome($number){
     echo"Not palindrome <br>";
    }
 }
-palinDrome("english");
+palinDrome("malayalam");
 ?>

@@ -4,7 +4,7 @@ $a="Martin";
 $b=strlen($a);
 echo"length of the string is $b <br>";
 $c=strpos($a,"artin");
-echo"the occurance of r is $c <br>";
+echo"the occurance of a is after $c <br>";
 $d=str_replace("lab","labs","Futura lab");
 echo "String after replace is $d <br>";
 $e=strtoupper($a);

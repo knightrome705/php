@@ -7,5 +7,5 @@ function facTorial($num){
     }
     echo $sum; 
 }
-facTorial("8");
+facTorial("5");
 ?>

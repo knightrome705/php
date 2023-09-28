@@ -10,6 +10,6 @@ function digitSum($t){
     }
     echo $sum;
 }
-digitSum(1161);
+digitSum(12);
 
 ?>
