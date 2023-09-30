@@ -34,11 +34,11 @@ else{
             <div class="col-4 mt-5 bg-dark text-light p-5">
                 <h1 class="text-light">Register</h1>
                 <label for="">name</label>
-                <input type="text" name="name" class="form-control"><br>
+                <input type="text" name="name" class="form-control" required><br>
                 <label for="">email</label>
-                <input type="email" name="email" class="form-control"><br>
+                <input type="email" name="email" class="form-control" required><br>
                 <label for="" >mobile</label>
-                <input type="mobile" name="phone" class="form-control">
+                <input type="mobile" name="phone" class="form-control" required>
                 <button type="submit" class="btn-primary mx-5" name="submit">Submit</button>
 
             </form>
