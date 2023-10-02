@@ -6,9 +6,9 @@ if(isset($_POST['submit'])){
     $gender=$_POST['gender'];
     $quali=$_POST['qualification'];
     $address=$_POST['address'];
-    $sql=mysqli_query($conn,"INSERT INTO register(name,dob,gender,qualification,address) VALUES ('$name','$dob','$gender','$guali','$address')");
+    $sql=mysqli_query($conn,"INSERT INTO register(name,dob,gender,qualification,address) VALUES ('$name','$dob','$gender','$quali','$address')");
 if($sql){
-    echo'<script>alert("registered sucessfully");window.location.href="create.php";</script>';
+    echo'<script>alert("registered sucessfully");window.location.href="form.php";</script>';
 }
 else{
     echo"Something went wrong";
@@ -31,18 +31,18 @@ else{
 
         </div>
         <form method="POST">
-        <div class="col-4 mt-5 bg-dark text-light p-5">
+        <div class="col-4 mt-5 bg-dark text-light p-5 ">
             <h1 class="text-light">Register</h1>
-            <label for="">name</label>
+            <label for="">Name</label>
             <input type="text" name="name" class="form-control" required><br>
             <label for="">DOB</label>
-            <input type="date" name="email" class="form-control" required><br>
+            <input type="date" name="dob" class="form-control" required><br>
             <label for="" >Gender</label>
-            <input type="text" name="phone" class="form-control" required>
+            <input type="text" name="gender" class="form-control" required>
             <label for="" >Qualification</label>
-            <input type="text" name="phone" class="form-control" required>
+            <input type="text" name="qualification" class="form-control" required>
             <label for="" >Address</label>
-            <input type="text" name="phone" class="form-control" required>
+            <input type="text" name="address" class="form-control" required>
             <button type="submit" class="btn-primary mx-5" name="submit">Submit</button>
 
         </form>
