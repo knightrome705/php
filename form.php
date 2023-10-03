@@ -6,7 +6,8 @@ if(isset($_POST['submit'])){
     $gender=$_POST['gender'];
     $quali=implode(",",$_POST['qualification']);
     $address=$_POST['address'];
-    $sql=mysqli_query($conn,"INSERT INTO register(name,dob,gender,qualification,address) VALUES ('$name','$dob','$gender','$quali','$address')");
+    $district=$_POST['district'];
+    $sql=mysqli_query($conn,"INSERT INTO register(name,dob,gender,qualification,address,district) VALUES ('$name','$dob','$gender','$quali','$address','$district')");
 if($sql){
     echo'<script>alert("registered sucessfully");window.location.href="form.php";</script>';
 }
@@ -52,9 +53,10 @@ else{
             <input type="text" name="address" class="form-control" required><br>
             <label for="">District</label>
             <select name="district" >
-                <option value="select"><Select></Select></option>
+                <option value="select">please select</option>
                 <option value="kannur">kannur</option>
-                <option value=""></option>
+                <option value="kozhikode">Kozhikode</option>
+                <option value="kochi">Kochi</option>
             </select>
             <br>
             <button type="submit" class="btn-primary mx-5" name="submit">Submit</button>
