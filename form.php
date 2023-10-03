@@ -4,7 +4,7 @@ if(isset($_POST['submit'])){
     $name=$_POST['name'];
     $dob=$_POST['dob'];
     $gender=$_POST['gender'];
-    $quali=$_POST['qualification'];
+    $quali=implode(",",$_POST['qualification']);
     $address=$_POST['address'];
     $sql=mysqli_query($conn,"INSERT INTO register(name,dob,gender,qualification,address) VALUES ('$name','$dob','$gender','$quali','$address')");
 if($sql){
@@ -38,11 +38,25 @@ else{
             <label for="">DOB</label>
             <input type="date" name="dob" class="form-control" required><br>
             <label for="" >Gender</label>
-            <input type="text" name="gender" class="form-control" required>
+            <input type="radio"  name="gender" value="male">male
+            <input type="radio"  name="gender" value="female">female
+            <br>
             <label for="" >Qualification</label>
-            <input type="text" name="qualification" class="form-control" required>
+            <br>
+            <input type="checkbox" name="qualification[]" value="sslc">sslc
+            <input type="checkbox" name="qualification[]" value="plus2">plus 2
+            <input type="checkbox" name="qualification[]" value="degree">Degree
+            <input type="checkbox" name="qualification[]" value="masters">Masters
+            <br>
             <label for="" >Address</label>
-            <input type="text" name="address" class="form-control" required>
+            <input type="text" name="address" class="form-control" required><br>
+            <label for="">District</label>
+            <select name="district" >
+                <option value="select"><Select></Select></option>
+                <option value="kannur">kannur</option>
+                <option value=""></option>
+            </select>
+            <br>
             <button type="submit" class="btn-primary mx-5" name="submit">Submit</button>
 
         </form>
