@@ -1,7 +1,8 @@
 <?php
 include "connection2.php";
 $id=$_GET['id'];
-$sql=mysqli_query($conn,"SELECT * FROM register WHERE id='$id'");
+var_dump($id);
+$sql=mysqli_query($conn,"SELECT * FROM student WHERE s_id='$id'");
 $data=mysqli_fetch_assoc($sql);
 if(isset($_POST['submit'])){
     $name=$_POST['name'];
@@ -23,10 +24,10 @@ if(isset($_POST['submit'])){
         move_uploaded_file($tempname,$folder);
     }
 
-    $sql1=mysqli_query($conn,"UPDATE register SET name='$name',email='$email',phone='$mobile',photo='$image' WHERE id='$id'");
+    $sql1=mysqli_query($conn,"UPDATE student SET name='$name',email='$email',phone='$mobile',photo='$image' WHERE s_id='$id'");
     if($sql1)
     {
-        echo '<script> alert("updated sucessfully");window.location.href="form2.php";</script>';
+        echo '<script> alert("updated sucessfully");window.location.href="student_display.php";</script>';
     }
     else{
         echo '<script> alert("something went wrong");</script>';

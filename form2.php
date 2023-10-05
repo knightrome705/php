@@ -3,8 +3,6 @@ include "connection2.php";
 $sql=mysqli_query($conn,"select * from register;");
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +23,9 @@ $sql=mysqli_query($conn,"select * from register;");
     <th>
         Phone
     </th>
+    <th>
+        photo
+    </th>
     <th colspan="2">
         Action
     </th>
@@ -36,6 +37,7 @@ while($row=mysqli_fetch_assoc($sql)){
     <td><?php echo $row['name'];?></td>
     <td><?php echo $row['email'];?></td>
     <td><?php echo $row['phone'];?></td>
+    <td><img src="./image/<?php echo $row['photo'];?>" alt="image" height="50px" width="40px"></td>
     <td>
         <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-primary">Edit</a>
         <a href="delete.php?id=<?php echo $row['id'];?>" class="btn btn-danger">Delete</a>
