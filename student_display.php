@@ -17,8 +17,11 @@ $sql=mysqli_query($conn,"select * from student;");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
+        <script>
+            let count=0;
+        </script>
   
-        <table border='2'>
+        <table>
             <tr>
             <?php
         while($row=mysqli_fetch_assoc($sql)){
@@ -31,6 +34,7 @@ $sql=mysqli_query($conn,"select * from student;");
             <p class="card-text"><?php echo $row['email'];?></p>
             <p class="card-text"><?php echo $row['phone'];?></p>
             <a href="student_update.php?id=<?php echo $row['s_id'];?>" class="btn btn-primary">Edit</a>
+            
     </div>
     </div>
         </td>

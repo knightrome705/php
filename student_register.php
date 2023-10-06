@@ -11,7 +11,7 @@ $filename=$_FILES["photo"]["name"];
     $image=$filename;
     $uploadOk=1;
     $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
-    if($imageFileType!="jpg"&& $imageFileType!="png"&& $imageFileType!="jpg"&&$imageFileType!="gif"){
+    if($imageFileType!="jpg"&& $imageFileType!="png"&& $imageFileType!="jpeg"&&$imageFileType!="gif"){
         echo "Sorry image of file type jpg,jepg,pdf and gif are allowed";
         $uploadOk=0;
     }
@@ -24,7 +24,7 @@ $filename=$_FILES["photo"]["name"];
     if($sql)
 {
     echo'<script> alert("registered successfully");
-    window.location.href="form3.php";</script>';
+    window.location.href="student_display.php";</script>';
 }
 else{
 echo"something went wrong";
