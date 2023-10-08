@@ -1,13 +1,11 @@
 <?php
-include "connection2.php";
-$sql=mysqli_query($conn,"select * from student;");
+include "connection3.php";
+session_start();
+$value=$_SESSION['key'];
+$sql=mysqli_query($conn,"select * from register where w_id='$value';");
+$data=mysqli_fetch_assoc($sql);
 
 ?>
-
-
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,43 +16,42 @@ $sql=mysqli_query($conn,"select * from student;");
     <style>
         .parent{
             display: inline-block;
+            margin-top: 100px;
         
         }
         .first{
             margin-left: 10px;
             margin-top: 10px;
         }
+        .second{
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIqL3WqxFnEyf5oW_kpyUnYAQD5HEcXJpN5w&usqp=CAU");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
-  <body>
-
-            
-            <?php
-        while($row=mysqli_fetch_assoc($sql)){
-        ?>
-        
-            <div class="parent">
+  <body class="second">
+        <center>
+        <div class="parent">
                 <div class="first card" style="width: 18rem;">
-                    <img src="./image/<?php echo $row['photo'];?>" alt="image not found" height="100px"  width="100px" class="card-img-top" >          
+                    <img src="./image/<?php echo $data['photo'];?>" alt="image not found" height="100px"  width="100px" class="card-img-top" >          
                     <div class="card-body">
                         <strong >Name:</strong>
-                    <h6 class="card-title"><?php echo $row['name'];?></h6>
+                    <h6 class="card-title"><?php echo $data['name'];?></h6>
                     <strong >Email:</strong>
-                    <p class="card-text"><?php echo $row['email'];?></p>
+                    <p class="card-text"><?php echo $data['email'];?></p>
                     <strong >Phone:</strong>
-                    <p class="card-text"><?php echo $row['phone'];?></p>
-                    <a href="student_update.php?id=<?php echo $row['s_id'];?>" class="btn btn-primary">Edit</a>
+                    <p class="card-text"><?php echo $data['phone'];?></p>
+                    <a href="updata.php?id=<?php echo $data['w_id'];?>" class="btn btn-primary">Edit</a>
                     
             </div>
             </div>
             </div>
-        
-        <?php 
-            }
-            ?>
-            
+
+    </center>
+     
             
     
         
