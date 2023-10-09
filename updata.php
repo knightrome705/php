@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
 <input type="email" name="email" class="form-control" value="<?php echo $data['email'];?>"><br>
 <input type="text" name="mobile" class="form-control" value="<?php echo $data['phone'];?>"><br>
 <input type="password" name="password" class="form-control" value="<?php echo $data['password'];?>"><br>
-<input type="file"class="form-control" name="photo"><br>
+<input type="file" name="photo" class="form-control" value="<?php echo $data['photo'];?>"><br>
 <center><input type="submit" value="submit" class=" btn btn-danger" name="submit"></center>
 </form>
 </div>

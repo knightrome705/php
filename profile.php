@@ -36,7 +36,7 @@ $data=mysqli_fetch_assoc($sql);
         <center>
         <div class="parent">
                 <div class="first card" style="width: 18rem;">
-                    <img src="./image/<?php echo $data['photo'];?>" alt="image not found" height="100px"  width="100px" class="card-img-top" >          
+                    <img src="./image/<?php echo $data['photo'];?>" alt="image not found" height="200px"  width="100px" class="card-img-top" >          
                     <div class="card-body">
                         <strong >Name:</strong>
                     <h6 class="card-title"><?php echo $data['name'];?></h6>

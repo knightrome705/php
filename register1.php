@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
     $sql1=mysqli_query($conn,"INSERT INTO login(login_id,email,password) VALUES('$data','$email','$password')");
     if($sql1)
     {
-        echo '<script> alert("updated sucessfully");window.location.href="login1.php";</script>';
+        echo '<script> alert("Registered sucessfully");window.location.href="login1.php";</script>';
     }
     else{
         echo '<script> alert("something went wrong");</script>';
