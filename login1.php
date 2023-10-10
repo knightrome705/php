@@ -1,16 +1,21 @@
 <?php
-include "connection3.php";
 session_start();
-if(isset($_POST['login'])){
+include "connection3.php";
+
+if(isset($_POST['submit']))
+{
     $username=$_POST['email'];
     $password=$_POST['password'];
     
     
-    $result=mysqli_query($conn,"SELECT * FROM login WHERE email='$username' AND password='$password'");
-    if($result){
+    $result=mysqli_query($conn,"SELECT * FROM login WHERE email='$username'");
+    if($result)
+    {
         $row=mysqli_fetch_assoc($result);
+        $hash=password_verify($password,$row['password']);
         $count=mysqli_num_rows($result);
-        if($count==1){
+        if($count==1 && $hash)
+        {
            
             $_SESSION['key']=$row['login_id'];
             
@@ -20,6 +25,10 @@ if(isset($_POST['login'])){
             window.location.assign('Home1.php');
         </script>
         <?php
+    }
+    else 
+    {
+        echo'<script>alert("login credential does not match");</script>';
     }
 }
 ?>
@@ -49,7 +58,7 @@ if(isset($_POST['login'])){
         <div class="col-4">
         </div>
             <div class="col-4 mt-5 bg-white text-dark p-5">
-                <form action=""method="POST">
+                <form method="POST">
                 <h2 class=text-dark>Already Exists...?</h2>
                     <h4 class=text-dark>LogIn</h4>
                     <label for="">Enter UserName</label>
@@ -57,7 +66,8 @@ if(isset($_POST['login'])){
                     <label for="">Password</label>
                     <input type="password"class="form-control"name="password"required>
                     <a href="register1.php">Don't have an account</a><br>
-                    <button name="login" class="btn btn-danger">login</button>
+                    
+                    <input type="submit" name="submit" value="login" class="btn btn-primary">
                 </form>
             </div>
         </div>

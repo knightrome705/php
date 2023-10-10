@@ -4,7 +4,8 @@ if(isset($_POST['submit'])){
     $name=$_POST['name'];
     $email=$_POST['email'];
     $phone=$_POST['phone'];
-    $password=$_POST['password'];
+    $hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
+    // $password=$_POST['password'];
     $data=mysqli_insert_id($conn);
     $filename=$_FILES["photo"]["name"];
     $tempname=$_FILES["photo"]["tmp_name"];
@@ -21,9 +22,9 @@ if(isset($_POST['submit'])){
     }else{
         move_uploaded_file($tempname,$folder);
     }
-    $result=mysqli_query($conn,"INSERT INTO register(name,email,phone,password,photo) VALUES('$name','$email','$phone','$password','$image')");
+    $result=mysqli_query($conn,"INSERT INTO register(name,email,phone,password,photo) VALUES('$name','$email','$phone','$hash','$image')");
     $data=mysqli_insert_id($conn);
-    $sql1=mysqli_query($conn,"INSERT INTO login(login_id,email,password) VALUES('$data','$email','$password')");
+    $sql1=mysqli_query($conn,"INSERT INTO login(login_id,email,password) VALUES('$data','$email','$hash')");
     if($sql1)
     {
         echo '<script> alert("Registered sucessfully");window.location.href="login1.php";</script>';
@@ -77,7 +78,7 @@ if(isset($_POST['submit'])){
                     <label for="">Password</label>
                     <input type="password"class="form-control" name="password" required>
                     <label for="">Password</label>
-                    <input type="file"class="form-control" name="photo" required>
+                    <input type="file"class="form-control" name="photo" >
                     <a href="login1.php">Already Exists</a><br>
                     <center><button name="submit" class="btn btn-danger">Submit</button></center>
                     </form>

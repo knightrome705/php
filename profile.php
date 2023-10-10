@@ -5,6 +5,7 @@ $value=$_SESSION['key'];
 $sql=mysqli_query($conn,"select * from register where w_id='$value';");
 $data=mysqli_fetch_assoc($sql);
 
+
 ?>
 <!doctype html>
 <html lang="en">

@@ -1,3 +1,18 @@
+<?php 
+session_start();
+if(!isset($_SESSION['key']))
+{
+  header('location:login1.php');
+}
+else 
+{
+  
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,3 +42,6 @@
     
 </body>
 </html>
+<?php
+}
+?>
