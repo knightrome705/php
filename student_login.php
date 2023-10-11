@@ -1,40 +1,31 @@
 <?php
-
+session_start();
 include "connection2.php";
 if(isset($_POST['submit'])){
-$name=$_POST['name'];
-$email=$_POST['email'];
-// $phone=$_POST['phone'];
-$hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
-// $filename=$_FILES["photo"]["name"];
-//     $tempname=$_FILES["photo"]["tmp_name"];
-//     $folder="./image/".$filename;
-//     $image=$filename;
-//     $uploadOk=1;
-//     $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
-//     if($imageFileType!="jpg"&& $imageFileType!="png"&& $imageFileType!="jpeg"&&$imageFileType!="gif"){
-//         echo "Sorry image of file type jpg,jepg,pdf and gif are allowed";
-//         $uploadOk=0;
-//     }
-//     if($uploadOk==0){
-//         echo "sorry";
-//     }else{
-//         move_uploaded_file($tempname,$folder);
-//     }
-    $sql =mysqli_query($conn,"INSERT INTO register(user_name,email,password) VALUES('$name','$email','$hash')");
-    $data=mysqli_insert_id($conn);
-    $sql1=mysqli_query($conn,"INSERT INTO login(login_id,user_name,password) VALUES('$data','$email','$hash')");
-    if($sql)
+$username=$_POST['email'];
+$password=$_POST['password'];
+$result=mysqli_query($conn,"SELECT * FROM login WHERE user_name='$username'");
+if($result)
 {
-    echo'<script> alert("registered successfully");
-    window.location.href="student_login.php";</script>';
+    $row=mysqli_fetch_assoc($result);
+    $hash=password_verify($password,$row['password']);
+    $count=mysqli_num_rows($result);
+    if($count==1 && $hash)
+    {
+       
+        $_SESSION['key']=$row['login_id'];
+        ?>
+        <script>
+        window.location.assign('studenthome.php');
+    </script>
+    <?php
+        
+    }
+    
+   
 }
-else{
-echo"something went wrong";
+}
 
-}
-
-}
 
 ?>
 
@@ -59,15 +50,10 @@ echo"something went wrong";
             <div class="col-4 mt-5 bg-dark text-light p-5">
                 <form action=""method="POST" enctype="multipart/form-data">
                     <h2 class=text-light>Register</h2>
-                    <label for="">Name</label>
-                    <input type="text" class="form-control"name="name"required><br>
                     <label for="">Enter Email</label>
                     <input type="text"class="form-control"name="email"required><br>
-                    <!-- <label for="">Enter mobile</label>
-                    <input type="text"class="form-control"name="phone"required><br> -->
                     <label for="">Enter password</label>
                     <input type="password"class="form-control"name="password"required><br>
-                    <!-- <input type="file" name="photo"> -->
                     <button type="submit"class="btn btn-danger mt-3 mx-5"  name="submit">Submit
 
                     </button>

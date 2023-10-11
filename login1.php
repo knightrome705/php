@@ -18,13 +18,15 @@ if(isset($_POST['submit']))
         {
            
             $_SESSION['key']=$row['login_id'];
-            
-        }
-        ?>
-        <script>
+            <script>
             window.location.assign('Home1.php');
         </script>
         <?php
+            
+        }
+        ?>
+        
+        
     }
     else 
     {
